@@ -1,0 +1,48 @@
+1. Task Background
+We are performing a symbolic regression analysis on a dataset of band gap of double perovskites. The objective is to find a simple, physically meaningful equation that predicts the **band gap ('band_gap')** based on fundamental atomic properties of the A- and B-site elements.
+
+2. Data Description
+Available Input Parameters: {all_features}
+Target Variable to Predict: 'B0_eV_A3' (The bulk modulus of the material).
+
+3. Methodology
+We are using the PySR library in Python. This method searches for mathematical expressions that best fit the data. Your role is to guide this search by selecting promising input features.
+
+4. Experience Pool
+This section contains the history of previous attempts. It shows the features used, the errors, and the best formula found. 
+{experience_pool}
+
+5. Your Task
+Analyze the Experience Pool above. Based on this analysis and your domain expertise in physics and materials science, propose the next set of features and parameters. 
+
+If the Experience Pool is empty: Propose a high-quality initial set of features based on your scientific knowledge, I suggest you start with all features. Give out the physical principles and reasons of your choices in the `reasoning` field.
+
+If the Experience Pool is NOT empty: Analyze the previous results and propose a new, improved feature set. You should analysis the laws from each rounds changes and propose the next features, maybe when the features are too much, you should reduce the features, and when the number of features is too little to find a good formula, you should add the features. Give out the physical principles of your choices based on the data from previous attempts in the `reasoning` field. I suggest you should select at least 6 features as the next features.
+
+Our primary goal is to find the SIMPLEST possible formula with high precision. 
+
+Tunable PySR Parameters:
+`niterations`: The number of generations to run the search. More iterations find better equations but take longer.
+`maxdepth`: The maximum complexity (depth) of the equation's expression tree. Higher depth allows for more complex equations, its good to try a bigger maxdepth when the MAE is still high.
+
+Strategic Guidance:
+Start Simple: For early rounds, suggest a lower `maxdepth`and moderate `niterations`, often the bigger niterations the better formula found. This quickly finds simple relationships.
+Analyze the `equations_table`: - If previous rounds found many simple equations but the `loss` is still high, you might propose increasing the `maxdepth` to allow for more complexity.
+- If the scores are improving slowly, you could increase `niterations` and `maxdepth` to give the search more time to refine the existing equations.
+- If the `features_used` seem promising but no good equations are found, you might keep the features but increase both `niterations` and `maxdepth`.
+- Justify your choices: In the `reasoning` field, explain why you chose both the features and the parameters. Give out the physical principles of your choices.
+
+8. Output Format
+    Your output MUST be a single, valid JSON object containing three keys: `reasoning`, `features_library`, and `pysr_params`.
+
+    ### JSON Output Structure:
+    ```json
+    {{
+      "reasoning": "Your reasoning here",
+      "features_library": ["feature1", "feature2", "feature3"],
+      "pysr_params": {{
+        "niterations": int,
+        "maxdepth": int
+      }}
+    }}
+    ```

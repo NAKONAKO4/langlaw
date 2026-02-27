@@ -1,0 +1,30 @@
+# SymLaw Configuration for Band Gap Prediction
+# Perovskite Band Gap Prediction
+
+llm:
+  api_key: "sk-"  # Set it with corresponding base url
+  base_url: "https://chat.intern-ai.org.cn/api/v1/"
+  model_name: "intern-s1"
+
+data:
+  data_path: "data/bandgap.csv"
+  experience_pool_path: "data/exp_pool_bandgap.json"
+  results_dir: "results/bandgap"
+  target: "Bandgap"
+  all_features: ['RB','RB2','XB','XB2','VB','VB2','PB','PB2','EB','EB2','NB','NB2','RA','IA','VA','PA','EA','NA','RX','XX','VX','PX','EX','AX','NX','BEAX','BEBX','BEB2X']  # Configure based on your dataset
+
+pysr:
+  niterations: 500
+  binary_operators: ['+', '-', '*', '/', '^']
+  model_selection: 'best'
+  random_state: 42
+  elementwise_loss: "L1DistLoss()"
+  maxdepth: 10
+  turbo: true
+  constraints:
+    '^': [-1, 1]
+
+experiment:
+  num_rounds: 20
+  max_experiences_in_prompt: 15
+  n_folds: 5

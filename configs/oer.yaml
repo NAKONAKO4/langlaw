@@ -1,0 +1,30 @@
+# SymLaw Configuration for OER Activity Prediction
+# Oxygen Evolution Reaction (OER) Activity Prediction
+
+llm:
+  api_key: "sk-"  # Set it with corresponding base url
+  base_url: "https://chat.intern-ai.org.cn/api/v1/"
+  model_name: "intern-s1"
+
+data:
+  data_path: "data/perovskite_data_18_0730_processed_2157_5ma.csv"
+  experience_pool_path: "results/exp/exp_pool_oer.json"
+  results_dir: "results/oer"
+  target: "VRHE"
+  all_features: ['Nd','XA','XB','QA','RA','RB','t','u']
+
+pysr:
+  niterations: 500
+  binary_operators: ['+', '-', '*', '/', '^']
+  model_selection: 'best'
+  random_state: 42
+  elementwise_loss: "L1DistLoss()"
+  maxdepth: 10
+  turbo: true
+  constraints:
+    '^': [-1, 1]
+
+experiment:
+  num_rounds: 20
+  max_experiences_in_prompt: 15
+  n_folds: 5

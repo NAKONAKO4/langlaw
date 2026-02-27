@@ -156,7 +156,15 @@ X_train, X_test, y_train, y_test = five_fold_split(
 If you use LangLaw in your research, please cite:
 
 ```bibtex
-
+@misc{guan2026discoveryinterpretablephysicallaws,
+      title={Discovery of Interpretable Physical Laws in Materials via Language-Model-Guided Symbolic Regression}, 
+      author={Yifeng Guan and Chuyi Liu and Dongzhan Zhou and Lei Bai and Wan-jian Yin and Jingyuan Li and Mao Su},
+      year={2026},
+      eprint={2602.22967},
+      archivePrefix={arXiv},
+      primaryClass={physics.comp-ph},
+      url={https://arxiv.org/abs/2602.22967}, 
+}
 ```
 
 ## License

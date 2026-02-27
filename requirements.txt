@@ -1,0 +1,18 @@
+# SymLaw - LLM-Guided Symbolic Regression Framework
+# Python Dependencies
+
+# Core Scientific Computing
+pandas>=1.5.0
+numpy>=1.23.0
+scikit-learn>=1.1.0
+
+# Symbolic Regression
+pysr>=0.16.0
+
+# LLM API
+openai>=1.0.0
+
+# Configuration Management
+python-dotenv>=1.0.0
+pydantic>=2.0.0
+pyyaml>=6.0

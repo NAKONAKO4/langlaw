@@ -1,0 +1,30 @@
+# SymLaw Configuration for Bulk Modulus Prediction
+# ABO₃ Perovskite Bulk Modulus (B0) Prediction
+
+llm:
+  api_key: "sk-"  # Set it with corresponding base url
+  base_url: "https://chat.intern-ai.org.cn/api/v1/"
+  model_name: "intern-s1"
+
+data:
+  data_path: "bulk_modulus.csv"
+  experience_pool_path: "results/exp/exp_pool_bulk.json"
+  results_dir: "results/bulk_modulus"
+  target: "B0_eV_A3"
+  all_features: ['Relax_Lattice_Constant','r_s_A','r_val_A','r_s_cat_A','epsilon_H_A','epsilon_L_A','EA_A','IP_A','EN_A','Z_A','n_A','r_s_B','r_val_B','r_s_cat_B','epsilon_H_B','epsilon_L_B','EA_B','IP_B','EN_B','Z_B','n_B','nA_times_nB']
+
+pysr:
+  niterations: 500
+  binary_operators: ['+', '-', '*', '/', '^']
+  model_selection: 'best'
+  random_state: 42
+  elementwise_loss: "L1DistLoss()"
+  maxdepth: 10
+  turbo: true
+  constraints:
+    '^': [-1, 1]
+
+experiment:
+  num_rounds: 20
+  max_experiences_in_prompt: 15
+  n_folds: 5
