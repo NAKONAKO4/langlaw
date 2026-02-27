@@ -6,8 +6,8 @@
 ### Quick Start with Docker (Recommended)
 
 ```bash
-docker pull langlaw:latest
-docker run --rm langlaw:latest python -c "import pysr; print('ready.')"
+docker pull nakonako4/langlaw:latest
+docker run --rm -it nakonako4/langlaw:latest python -c "import pysr; print('ready.')"
 ```
 
 ### Local Installation
